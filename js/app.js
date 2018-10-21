@@ -24,6 +24,43 @@ function shuffle(array) {
 
     return array;
 }
+//set event listener on deck so we dont have to set multiple(multiple cards)
+const deck = document.querySelector('.deck');
+// function that toggles a css class of the cards
+
+// the actual listener
+deck.addEventListener('click', event => {
+  const clickTarget = event.target;
+  if (clickTarget.classList.contains('card') && toggledCards.length < 2) {
+    toggleCard(clickTarget);
+    addToggleCard(clickTarget);
+    if (toggledCards.length === 2 ) {
+      checkForMatch();
+    }
+  }
+});
+
+// array that holds the open cards
+let toggledCards = [];
+
+function toggleCard(clickTarget) {
+  clickTarget.classList.toggle('open');
+  clickTarget.classList.toggle('show');
+}
+
+ function addToggleCard(clickTarget) {
+     toggledCards.push(clickTarget);
+ }
+
+ function checkForMatch() {
+   if (toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className) {
+     console.log('M');
+   }
+   else {
+     console.log('x');
+   }
+ }
+
 
 
 /*
