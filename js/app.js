@@ -14,9 +14,10 @@ let flippedCards = [];
 
 function shuffleDeck() {
   const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
-  console.log('cards to shuffle', cardsToShuffle);
-  const shuffledcards = shuffle(cardsToShuffle);
-  console.log('shuffled', shuffledcards);
+  const shuffledCards = shuffle(cardsToShuffle);
+  for (card of shuffledCards) {
+    deck.appendChild(card);
+  }
 }
 shuffleDeck();
 
