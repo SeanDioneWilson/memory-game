@@ -1,17 +1,11 @@
-/*
- * Create a list that holds all of your cards
- */
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 
+// variables
 const deck = document.querySelector('.deck');
-
+let moves = 0;
 let flippedCards = [];
 
+
+// shuffle cards and append to deck
 function shuffleDeck() {
   const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
   const shuffledCards = shuffle(cardsToShuffle);
@@ -20,7 +14,6 @@ function shuffleDeck() {
   }
 }
 shuffleDeck();
-
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -38,15 +31,11 @@ function shuffle(array) {
     return array;
 }
 
-// function that toggles a css class of the cards
 
-
-
-// the actual listener
+// event listener for card clicks -
 deck.addEventListener('click', event => {
   const clickTarget = event.target;
   if (isClickValid(clickTarget)
-
   ) {
     toggleCard(clickTarget);
     addToggleCard(clickTarget);
@@ -56,6 +45,7 @@ deck.addEventListener('click', event => {
   }
 });
 
+// function for checking if the card click should be approved
 function isClickValid(clickTarget) {
   return (
     clickTarget.classList.contains('card') &&
@@ -64,6 +54,8 @@ function isClickValid(clickTarget) {
     !flippedCards.includes(clickTarget)
   );
 }
+
+// function for checking with
 function checkForMatch() {
   if (flippedCards[0].firstElementChild.className === flippedCards[1].firstElementChild.className) {
     flippedCards[0].classList.toggle('match');
@@ -79,13 +71,13 @@ function checkForMatch() {
   }
 }
 
-
+// toggle css class list of clicked cards
 function toggleCard(card) {
   card.classList.toggle('open');
   card.classList.toggle('show');
 }
 
-
+// add the flipped cards to a 'hidden' array for keeping track
 function addToggleCard(clickTarget) {
     flippedCards.push(clickTarget);
 }
