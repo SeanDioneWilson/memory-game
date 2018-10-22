@@ -1,8 +1,6 @@
 /*
  * Create a list that holds all of your cards
  */
-
-
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -39,7 +37,9 @@ function shuffle(array) {
 // the actual listener
 deck.addEventListener('click', event => {
   const clickTarget = event.target;
-  if (clickTarget.classList.contains('card') && flippedCards.length < 2) {
+  if (isClickValid(clickTarget)
+
+  ) {
     toggleCard(clickTarget);
     addToggleCard(clickTarget);
     if (flippedCards.length === 2 ) {
@@ -48,6 +48,14 @@ deck.addEventListener('click', event => {
   }
 });
 
+function isClickValid(clickTarget) {
+  return (
+    clickTarget.classList.contains('card') &&
+    !clickTarget.classList.contains('match') &&
+    flippedCards.length < 2 &&
+    !flippedCards.includes(clickTarget)
+  );
+}
 function checkForMatch() {
   if (flippedCards[0].firstElementChild.className === flippedCards[1].firstElementChild.className) {
     flippedCards[0].classList.toggle('match');
