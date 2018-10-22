@@ -8,16 +8,23 @@
  *   - add each card's HTML to the page
  */
 
+const deck = document.querySelector('.deck');
 
- // variables
- // array that holds the open cards
- let flippedCards = [];
- //set event listener on deck so we dont have to set multiple(multiple cards)
- const deck = document.querySelector('.deck');
+let flippedCards = [];
+
+function shuffleDeck() {
+  const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+  console.log('cards to shuffle', cardsToShuffle);
+  const shuffledcards = shuffle(cardsToShuffle);
+  console.log('shuffled', shuffledcards);
+}
+shuffleDeck();
+
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
