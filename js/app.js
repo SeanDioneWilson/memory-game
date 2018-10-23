@@ -3,6 +3,7 @@
 const deck = document.querySelector('.deck');
 let moves = 0;
 let flippedCards = [];
+let clockOff = true;
 
 
 // shuffle cards and append to deck
@@ -37,6 +38,10 @@ deck.addEventListener('click', event => {
   const clickTarget = event.target;
   if (isClickValid(clickTarget)
   ) {
+    if (clockOff) {
+      startClock();
+      clockOff = false;
+    }
     toggleCard(clickTarget);
     addToggleCard(clickTarget);
     if (flippedCards.length === 2 ) {
