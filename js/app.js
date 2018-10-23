@@ -90,6 +90,26 @@ function addMove() {
   movesText.innerHTML = moves;
 }
 
+// function to check number of moves in order to determine star rating
+function checkScore() {
+  if (moves === 16 || moves ===24) {
+    hideStar();
+  }
+}
+
+// remove star function
+function hideStar() {
+  const starList = document.querySelectorAll('.stars li');
+  for (star of starList) {
+      if (star.style.display !== 'none') {
+        star.style.display = 'none';
+        break;
+      }
+  }
+}
+
+
+
 
 
 
