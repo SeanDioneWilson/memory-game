@@ -157,3 +157,7 @@ h1 {
   width: 60px;
   height: 30px;
 }
+
+.hide {
+  display: none;
+}

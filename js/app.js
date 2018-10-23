@@ -141,3 +141,31 @@ function displayTime() {
 function stopClock() {
   clearInterval(clockId);
 }
+
+// function to toggle the modal
+function toggleModal() {
+  const modal = document.querySelector('.modal__background');
+  modal.classList.toggle('hide');
+}
+
+// modal tests
+time = 121;
+displayTime();
+moves = 16;
+checkScore();
+
+writeModalStats();
+toggleModal();
+
+// function that puts the modal stats into the dom
+function writeModalStats() {
+  const timeStat = document.querySelector('.modal__time');
+  const clockTime = document.querySelector('.clock').innerHTML;
+  const movesStat = document.querySelector('.modal__moves');
+  const starsStat = document.querySelector('modal__stars';)
+  const stars = getStars();
+
+  timeStat.innerHTML = `Time = ${clockTime}`;
+  movesStat.innerHTML = `Moves = ${moves}`;
+  starsStat.innerHTML = `Stars = ${stars}`;
+}
