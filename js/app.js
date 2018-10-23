@@ -182,3 +182,42 @@ function getStars() {
   console.log(starCount);
   return starCount;
 }
+
+// modal modal__buttons
+document.querySelector('.modal__cancel').addEventListener('click', () => {
+  toggleModal();
+});
+
+document.querySelector('.modal__replay').addEventListener('click', () => {
+
+});
+
+// reset game function
+function resetGame() {
+  resetClockAndTime();
+  resetMoves();
+  resetStars();
+  shuffleDeck();
+}
+
+function resetClockAndTime() {
+  stopClock();
+  clockOff = true;
+  time = 0;
+  displayTime();
+}
+
+// reset moves
+function resetMoves() {
+  moves = 0;
+  document.querySelector('.moves').innerHTML = moves;
+}
+
+// reser stars function
+function resetStars() {
+  stars = 0;
+  const starList = document.querySelectorAll('.stars li');
+  for (star of starList) {
+    star.style.display = 'inline';
+  }
+}
