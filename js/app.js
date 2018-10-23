@@ -5,6 +5,7 @@ let moves = 0;
 let flippedCards = [];
 let clockOff = true;
 let time = 0;
+let clockId;
 
 
 
@@ -118,7 +119,7 @@ function hideStar() {
 
 // clock function using setInterval
 function startClock() {
-  let clockId = setInterval(() => {
+  clockId = setInterval(() => {
     time++
     displayTime();
   }, 1000);
@@ -134,4 +135,9 @@ function displayTime() {
   } else {
     clock.innerHTML = `${minutes}:${seconds}`;
   }
+}
+
+// stop the clock
+function stopClock() {
+  clearInterval(clockId);
 }
