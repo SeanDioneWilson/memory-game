@@ -4,6 +4,7 @@ const deck = document.querySelector('.deck');
 let moves = 0;
 let flippedCards = [];
 let clockOff = true;
+let time = 0;
 
 
 // shuffle cards and append to deck
@@ -116,9 +117,15 @@ function hideStar() {
 
 // clock function using setInterval
 function startClock() {
-  time = 0;
   let clockId = setInterval(() => {
     time++
-    console.log(time);
+    displayTime();
   }, 1000);
+}
+
+// display time function
+function displayTime() {
+  const clock = document.querySelector('.clock');
+  console.log(clock);
+  clock.innerHTML = time;
 }
