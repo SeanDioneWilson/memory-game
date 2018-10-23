@@ -6,6 +6,8 @@ let flippedCards = [];
 let clockOff = true;
 let time = 0;
 let clockId;
+let matched = 0;
+const TOTAL_PAIRS = 8;
 
 
 
@@ -71,6 +73,10 @@ function checkForMatch() {
     flippedCards[0].classList.toggle('match');
     flippedCards[1].classList.toggle('match');
     flippedCards = [];
+    matched++;
+    if (matched === TOTAL_PAIRS) {
+      gameOver();
+    }
   }
   else {
     setTimeout(() => {
@@ -148,14 +154,6 @@ function toggleModal() {
   modal.classList.toggle('hide');
 }
 
-// modal tests
-time = 121;
-displayTime();
-moves = 16;
-checkScore();
-
-writeModalStats();
-toggleModal();
 
 // function that puts the modal stats into the dom
 function writeModalStats() {
@@ -197,6 +195,7 @@ function resetGame() {
   resetClockAndTime();
   resetMoves();
   resetStars();
+  resetCards();
   shuffleDeck();
 }
 
@@ -213,11 +212,39 @@ function resetMoves() {
   document.querySelector('.moves').innerHTML = moves;
 }
 
-// reser stars function
+// reset stars function
 function resetStars() {
   stars = 0;
   const starList = document.querySelectorAll('.stars li');
   for (star of starList) {
     star.style.display = 'inline';
+  }
+}
+
+//  reset button handler
+document.querySelector('.restart').addEventListener('click', resetGame);
+
+
+document.querySelector('.modal__replay').addEventListener('click', replayGame);
+
+// game over function
+function gameOver() {
+  stopClock();
+  writeModalStats();
+  toggleModal();
+}
+
+// replay game
+function replayGame() {
+  resetGame();
+  toggleModal();
+  resetCards();
+}
+
+// resetCards function
+function resetCards() {
+  const cards = document.querySelectorAll('.deck li');
+  for (let card of cards) {
+    card.className = 'card';
   }
 }
