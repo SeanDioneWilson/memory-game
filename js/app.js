@@ -41,6 +41,7 @@ deck.addEventListener('click', event => {
     addToggleCard(clickTarget);
     if (flippedCards.length === 2 ) {
       checkForMatch(clickTarget);
+      addMove();
     }
   }
 });
@@ -55,7 +56,7 @@ function isClickValid(clickTarget) {
   );
 }
 
-// function for checking with
+// function for checking if the clicked cards are a match
 function checkForMatch() {
   if (flippedCards[0].firstElementChild.className === flippedCards[1].firstElementChild.className) {
     flippedCards[0].classList.toggle('match');
@@ -80,6 +81,13 @@ function toggleCard(card) {
 // add the flipped cards to a 'hidden' array for keeping track
 function addToggleCard(clickTarget) {
     flippedCards.push(clickTarget);
+}
+
+// add number of moves to the counter
+function addMove() {
+  moves++;
+  const movesText = document.querySelector('.moves');
+  movesText.innerHTML = moves;
 }
 
 
