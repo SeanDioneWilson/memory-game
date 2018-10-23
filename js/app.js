@@ -162,10 +162,23 @@ function writeModalStats() {
   const timeStat = document.querySelector('.modal__time');
   const clockTime = document.querySelector('.clock').innerHTML;
   const movesStat = document.querySelector('.modal__moves');
-  const starsStat = document.querySelector('modal__stars';)
+  const starsStat = document.querySelector('.modal__stars');
   const stars = getStars();
 
   timeStat.innerHTML = `Time = ${clockTime}`;
   movesStat.innerHTML = `Moves = ${moves}`;
   starsStat.innerHTML = `Stars = ${stars}`;
+}
+
+// get stars function
+function getStars() {
+  stars = document.querySelectorAll('.stars li');
+  starCount = 0;
+  for (star of stars) {
+    if (star.style.display !== 'none') {
+      starCount++;
+    }
+  }
+  console.log(starCount);
+  return starCount;
 }
