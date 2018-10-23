@@ -42,6 +42,7 @@ deck.addEventListener('click', event => {
     if (flippedCards.length === 2 ) {
       checkForMatch(clickTarget);
       addMove();
+      checkScore();
     }
   }
 });
